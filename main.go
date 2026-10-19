@@ -8,7 +8,7 @@ import (
 func main() {
 
 	if len(os.Args) <= 1 {
-		//afficher l'erreur ici
+		fmt.Println(ErrorsNombre)
 		os.Exit(1)
 	}
 
@@ -27,7 +27,7 @@ func gameSelect(c string) {
 	case "score":
 		fmt.Printf("scoreeeeds")
 	default:
-		//Mettre une erreur ici car tu pues ta race
+		fmt.Println(ErrorsBadArgument)
 		os.Exit(1)
 	}
 }
