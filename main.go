@@ -19,15 +19,26 @@ func main() {
 }
 
 func gameSelect(c string) {
-	switch c{
+	switch c {
 	case "jouer":
 		fmt.Printf("ça joue\n")
 	case "reprendre":
 		fmt.Printf("parti repri")
 	case "score":
-		fmt.Printf("scoreeeeds")
+		score()
 	default:
 		fmt.Println(ErrorsBadArgument)
 		os.Exit(1)
 	}
+}
+
+func score() {
+	contenu, err := os.ReadFile("scores.txt")
+	if err != nil {
+		fmt.Println(ErrorsScore)
+		os.Exit(1)
+	}
+
+	fmt.Println("Scores")
+	fmt.Println(string(contenu))
 }
