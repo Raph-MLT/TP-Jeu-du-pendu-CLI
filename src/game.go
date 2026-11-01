@@ -3,7 +3,6 @@ package src
 import "fmt"
 
 func StartGame() {
-	fmt.Printf("Veuillez entrer un nom.\n")
 	pseudo := pickUser()
 	mot := "mariany"
 	lettres := []string{}
@@ -17,13 +16,32 @@ func StartGame() {
 
 		var input string
 		fmt.Scan(&input)
-		if len(input) == 1 && []rune(input)[0] >= 'a' && []rune(input)[0] <= 'z' && []rune(input)[0] >= 'A' && []rune(input)[0] <= 'Z' {
+
+		var letterAlreadyFound bool = false
+		for _, l := range lettres {
+			if input == l {
+				letterAlreadyFound = true
+			}
+		}
+		if letterAlreadyFound {
+			continue
+		}
+
+		//fmt.Println([]rune(input)[0])
+		var letterFound bool
+		if len(input) == 1 && ([]rune(input)[0] >= 'a' && []rune(input)[0] <= 'z') || ([]rune(input)[0] >= 'A' && []rune(input)[0] <= 'Z') {
 			lettres = append(lettres, input)
 			for _, v := range mot {
-				if string(v) != input {
-					essais -= 1
+				if string(v) == input {
+					letterFound = true
 				}
 			}
+			if !letterFound {
+				essais -= 1
+			}
+		}
+		if checkWork(mot, lettres) {
+			break
 		}
 	}
 
@@ -51,4 +69,16 @@ func pickUser() string {
 	}
 
 	return pseudo
+}
+
+func checkWork(m string, l []string) bool {
+	for _, r := range m {
+		for _, w := range l {
+			if r == []rune(w)[0] {
+				break
+			}
+			return false
+		}
+	}
+	return true
 }
