@@ -38,7 +38,7 @@ func score() {
 		fmt.Println(ErrorsScore)
 		os.Exit(1)
 	}
-
+	
 	fmt.Println("Scores")
 	fmt.Println(string(contenu))
 }
