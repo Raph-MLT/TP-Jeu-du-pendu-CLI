@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func chargerMots(chemin string) ([]string, error) {
+func ChargerMots(chemin string) ([]string, error) {
 	fichier, err := os.Open(chemin)
 	if err != nil {
 		if errors.Is(err, os.ErrNotExist) {
