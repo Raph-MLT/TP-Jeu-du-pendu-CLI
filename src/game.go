@@ -6,7 +6,7 @@ func StartGame() {
 	fmt.Printf("Veuillez entrer un nom.\n")
 	pseudo := pickUser()
 	mot := "mariany"
-	lettres := []string
+	lettres := []string{}
 	essais := 6
 
 	fmt.Println(mot)
@@ -18,7 +18,12 @@ func StartGame() {
 		var input string
 		fmt.Scan(&input)
 		if len(input) == 1 && []rune(input)[0] >= 'a' && []rune(input)[0] <= 'z' && []rune(input)[0] >= 'A' && []rune(input)[0] <= 'Z' {
-			
+			lettres = append(lettres, input)
+			for _, v := range mot {
+				if string(v) != input {
+					essais -= 1
+				}
+			}
 		}
 	}
 
