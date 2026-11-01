@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func chargerMots(chemin string) ([]string, error) {
+func ChargerMots(chemin string) ([]string, error) {
 	fichier, err := os.Open(chemin)
 	if err != nil {
 		if errors.Is(err, os.ErrNotExist) {
@@ -58,7 +58,19 @@ func motValide(mot string) bool {
 	return nbLettres > 0
 }
 
-func motAuHasard(mots []string) string {
+func MotAuHasard(mots []string) string {
 	position := rand.IntN(len(mots))
 	return mots[position]
+}
+func LettreAuHasard(mot string) string {
+	lettre := ""
+
+	for lettre == "" {
+		position := rand.IntN(len(mot))
+		if mot[position] != '-' {
+			lettre = string(mot[position])
+		}
+	}
+
+	return lettre
 }

@@ -41,6 +41,7 @@ func StartGame() {
 			}
 		}
 		if checkWork(mot, lettres) {
+			fmt.Printf("Partie gagné.")
 			break
 		}
 	}
@@ -72,13 +73,14 @@ func pickUser() string {
 }
 
 func checkWork(m string, l []string) bool {
+	outer:
 	for _, r := range m {
 		for _, w := range l {
 			if r == []rune(w)[0] {
-				break
+				continue outer
 			}
-			return false
 		}
+		return false
 	}
 	return true
 }

@@ -3,12 +3,13 @@ package main
 import (
 	"fmt"
 	"os"
+	"pendu/src"
 )
 
 func main() {
 
 	if len(os.Args) <= 1 {
-		fmt.Println(ErrorsNombre)
+		fmt.Println(src.ErrorsNombre)
 		os.Exit(1)
 	}
 
@@ -22,12 +23,13 @@ func gameSelect(c string) {
 	switch c {
 	case "jouer":
 		fmt.Printf("ça joue\n")
+		src.StartGame()
 	case "reprendre":
 		fmt.Printf("parti repri")
 	case "score":
 		score()
 	default:
-		fmt.Println(ErrorsBadArgument)
+		fmt.Println(src.ErrorsBadArgument)
 		os.Exit(1)
 	}
 }
@@ -35,7 +37,7 @@ func gameSelect(c string) {
 func score() {
 	contenu, err := os.ReadFile("scores.txt")
 	if err != nil {
-		fmt.Println(ErrorsScore)
+		fmt.Println(src.ErrorsScore)
 		os.Exit(1)
 	}
 	
