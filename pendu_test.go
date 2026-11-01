@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"testing"
 	"pendu/src"
+	"testing"
 )
 
 func TestMaPartie(t *testing.T) {
@@ -14,11 +14,11 @@ func TestMaPartie(t *testing.T) {
 	mot := src.MotAuHasard(mots)
 	fmt.Println("Mot tiré :", mot, "- lettre révélée :", src.LettreAuHasard(mot))
 
-	err = enregistrerScore("Junior, Alex", "victoire", 4, mot, []string{"a", "b"})
+	err = src.enregistrerScore("Junior, Alex", "victoire", 4, mot, []string{"a", "b"})
 	if err != nil {
 		t.Fatal(err)
 	}
-	if err := afficherScores(); err != nil {
+	if err := src.afficherScores(); err != nil {
 		t.Fatal(err)
 	}
 }
