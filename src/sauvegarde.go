@@ -14,7 +14,7 @@ type Sauvegarde struct {
 	Essais  int      `json:"essais"`
 }
 
-func sauvegarder(pseudo string, mot string, lettres []string, essais int) error {
+func Sauvegarder(pseudo string, mot string, lettres []string, essais int) error {
 	s := Sauvegarde{Pseudo: pseudo, Mot: mot, Lettres: lettres, Essais: essais}
 
 	donnees, err := json.MarshalIndent(s, "", "  ")
@@ -30,7 +30,7 @@ func sauvegarder(pseudo string, mot string, lettres []string, essais int) error 
 	return nil
 }
 
-func chargerSauvegarde() (Sauvegarde, error) {
+func ChargerSauvegarde() (Sauvegarde, error) {
 	var s Sauvegarde
 
 	donnees, err := os.ReadFile("save.json")

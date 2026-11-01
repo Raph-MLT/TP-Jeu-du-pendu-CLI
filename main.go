@@ -25,7 +25,7 @@ func gameSelect(c string) {
 		fmt.Printf("ça joue\n")
 		src.StartGame()
 	case "reprendre":
-		fmt.Printf("parti repri")
+		fmt.Println(src.ChargerSauvegarde()) 
 	case "score":
 		score()
 	default:
@@ -35,12 +35,13 @@ func gameSelect(c string) {
 }
 
 func score() {
-	contenu, err := os.ReadFile("scores.txt")
+	/* contenu, err := os.ReadFile("scores.txt")
 	if err != nil {
 		fmt.Println(src.ErrorsScore)
 		os.Exit(1)
 	}
 	
 	fmt.Println("Scores")
-	fmt.Println(string(contenu))
+	fmt.Println(string(contenu)) */
+	src.AfficherScores()
 }

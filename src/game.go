@@ -1,6 +1,9 @@
 package src
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
 func StartGame() {
 	pseudo := pickUser()
@@ -8,7 +11,7 @@ func StartGame() {
 	lettres := []string{LettreAuHasard(mot)}
 	essais := 6
 
-	fmt.Println(mot)
+	//fmt.Println(mot)
 
 	for essais > 0 {
 		Display(pseudo, mot, lettres, essais)
@@ -25,6 +28,11 @@ func StartGame() {
 		if letterAlreadyFound {
 			continue
 		}
+		if input == "!save" {
+			fmt.Printf("Partie enregistrer ! à très vite :]\n")
+			EnregistrerScore(pseudo, "?", essais, mot, lettres)
+			os.Exit(0)
+		}
 
 		//fmt.Println([]rune(input)[0])
 		var letterFound bool
@@ -40,11 +48,14 @@ func StartGame() {
 			}
 		}
 		if checkWork(mot, lettres) {
-			fmt.Printf("Partie gagné.")
+			fmt.Printf("Partie gagné !!!\n")
+			EnregistrerScore(pseudo, "gagné", essais, mot, lettres)
+			os.Exit(0)
 			break
 		}
 	}
-
+	fmt.Printf("Partie perdue :(\n")
+	EnregistrerScore(pseudo, "perdu", essais, mot, lettres)
 }
 
 func pickUser() string {

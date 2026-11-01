@@ -1,4 +1,4 @@
-package main
+package src
 
 import (
 	"encoding/csv"
@@ -12,7 +12,7 @@ import (
 
 const fichierScores = "scores.csv"
 
-func enregistrerScore(pseudo string, statut string, essais int, mot string, lettres []string) error {
+func EnregistrerScore(pseudo string, statut string, essais int, mot string, lettres []string) error {
 	fichierExiste := true
 	_, err := os.Stat(fichierScores)
 	if errors.Is(err, os.ErrNotExist) {
@@ -56,7 +56,7 @@ func enregistrerScore(pseudo string, statut string, essais int, mot string, lett
 	return nil
 }
 
-func afficherScores() error {
+func AfficherScores() error {
 	fichier, err := os.Open(fichierScores)
 	if err != nil {
 		if errors.Is(err, os.ErrNotExist) {

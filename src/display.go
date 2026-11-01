@@ -3,7 +3,7 @@ package src
 import "fmt"
 
 func Display(pseudo, mot string, lettres []string, essais int) {
-	fmt.Println(pseudo, mot, lettres, essais)
+	//fmt.Println(pseudo, mot, lettres, essais)
 
 	hiddenWord := ""
 	outer:
@@ -16,5 +16,8 @@ func Display(pseudo, mot string, lettres []string, essais int) {
 		}
 		hiddenWord += "_ "
 	}
-	fmt.Println("Mot: ", hiddenWord)
+	fmt.Printf("JOUEUR: %s\n\n", pseudo)
+	fmt.Printf("Mot: %s\n", hiddenWord)
+	fmt.Println("Lettres proposés: ", lettres)
+	fmt.Printf("Essais restant: %d\n", essais)
 }
