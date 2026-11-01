@@ -62,3 +62,15 @@ func motAuHasard(mots []string) string {
 	position := rand.IntN(len(mots))
 	return mots[position]
 }
+func lettreAuHasard(mot string) string {
+	lettre := ""
+
+	for lettre == "" {
+		position := rand.IntN(len(mot))
+		if mot[position] != '-' {
+			lettre = string(mot[position])
+		}
+	}
+
+	return lettre
+}
