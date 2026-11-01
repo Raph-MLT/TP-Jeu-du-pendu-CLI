@@ -74,3 +74,11 @@ func LettreAuHasard(mot string) string {
 
 	return lettre
 }
+func MotAleatoire() string {
+	mots, err := ChargerMots("mot.txt")
+	if err != nil {
+		fmt.Println("Erreur :", err)
+		os.Exit(1)
+	}
+	return MotAuHasard(mots)
+}

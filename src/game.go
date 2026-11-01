@@ -4,12 +4,11 @@ import "fmt"
 
 func StartGame() {
 	pseudo := pickUser()
-	mot := "mariany"
-	lettres := []string{}
+	mot := MotAleatoire()
+	lettres := []string{LettreAuHasard(mot)}
 	essais := 6
 
 	fmt.Println(mot)
-	
 
 	for essais > 0 {
 		Display(pseudo, mot, lettres, essais)
@@ -73,7 +72,7 @@ func pickUser() string {
 }
 
 func checkWork(m string, l []string) bool {
-	outer:
+outer:
 	for _, r := range m {
 		for _, w := range l {
 			if r == []rune(w)[0] {
@@ -83,4 +82,5 @@ func checkWork(m string, l []string) bool {
 		return false
 	}
 	return true
+
 }
